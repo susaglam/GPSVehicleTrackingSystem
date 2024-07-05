@@ -2,6 +2,8 @@
 
 This project is a GPS Vehicle Tracking System that allows users to monitor and track the location of vehicles in real-time. The system provides a user-friendly interface to view vehicle movements on a map, log data, and analyze travel history.
 
+![Screenshot of the Application](Screenshot1.png)
+
 ## Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -113,6 +115,7 @@ We welcome contributions to enhance this project! Here’s how you can help:
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
 
 ## Contact
 If you have any questions or suggestions, feel free to reach out:
