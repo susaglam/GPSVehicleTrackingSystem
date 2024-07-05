@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{72F409EB-9949-442F-999F-05A4EB0F9D25}</ProjectGuid>
+    <SchemaVersion>2</SchemaVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>YTSDAL</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>YTSDAL</RootNamespace>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'yok|AnyCPU'">
+    <OutputPath>bin\yok\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\YTS-server\GpsServer\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AracTakip.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AracTakip.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AracTakip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AracTakip.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AracTakip.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="armoli.cs" />
+    <Compile Include="GeoReverseResult .cs" />
+    <Compile Include="GoogleGeoJsonReverseResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SP_AktiviteRaporuByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_AnaKullaniciAraclari_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_AracBilgileribyCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_AracBilgileriByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_AracListesiByUpperCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_AracListesi_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_CalismaRaporuByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_CalismaSuresiByCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_CalismaSuresiByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DetayliMesafeRaporu_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DurakIhlalleribyCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DuraklamaRaporu_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DurmaRaporuByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DurmaSuresiByCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DurmaSuresiByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_Gecmis_Izleme_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_GetAnimatedDataByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_IhlalListesiByCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_IhlalListesiByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_KontakRaporu_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_LoginBilgileri_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_PersonelTakipBilgileriByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_RolantiSuresiByCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_RolantiSuresiByTerminalId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_Sample_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_SeferPaketi_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_TumAraclarByCompanyId_Result.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_ACCESSORY.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_ACCESSORYDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_ALARM.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_ALARM_DETAILS.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_ARCHIVE.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_CALISMA.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_COMPANY.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DATA_MESSAGES.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURAKLAR_ARASI_SURELER.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURAKLAR_ARASI_SURE_TANIM.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURAK_DETAY.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURAK_GIRIS_CIKIS.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURAK_IHLAL_MASTER.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURAK_TANIM.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_DURMA.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_INDEKS_DETAILS.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_INVOICE.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_KOMUT.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_KOMUTDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_ALARMDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_ALARM_DETAILSDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_MSG_TYPE.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_MSG_TYPEDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_PERSONNEL.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_PERSONNELDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="BasarPOI.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="BasarResults.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_ARCHIVEDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="BasarSoft.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_PROG_ANSWER.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_PROG_ANSWERDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_COMPANYDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_READ_IDENTITY.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_READ_IDENTITYDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_DATA_MESSAGESDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_INVOICEDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_RFIDCARD.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_SEFER_PAKETI.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_SEFER_PAKETIDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_STATUS_DETAILS.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_STATUS_DETAILSDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="DbHelper.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_INDEKS_DETAILSDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_TERMINAL.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_TERMINALDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Kullanici.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="DurakIhlal.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MapPoint.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="BoundingBox.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="DenemeHersey_Result.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="DurakTanımlama.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ReturnMessage.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="IOperation.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TBL_USER.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TBL_USERDAL.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="test.cs">
+      <DependentUpon>AracTakip.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <None Include="App.Config" />
+    <EntityDeploy Include="AracTakip.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AracTakip.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AracTakip.edmx.diagram">
+      <DependentUpon>AracTakip.edmx</DependentUpon>
+    </None>
+    <Compile Include="GeoResult.cs" />
+    <Compile Include="GoogleGeoJsonResult.cs" />
+    <None Include="packages.config" />
+    <Compile Include="vpGeo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AracTakip.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AracTakip.edmx</DependentUpon>
+      <LastGenOutput>AracTakip.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AracTakip.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AracTakip.edmx</DependentUpon>
+      <LastGenOutput>AracTakip.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

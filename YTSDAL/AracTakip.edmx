@@ -1,0 +1,2744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ATSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_ACCESSORY">
+          <Key>
+            <PropertyRef Name="AccessoryTypeId" />
+          </Key>
+          <Property Name="AccessoryTypeId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AccessoryDetail" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ALARM">
+          <Key>
+            <PropertyRef Name="AlarmID" />
+          </Key>
+          <Property Name="AlarmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArchiveID" Type="int" Nullable="false" />
+          <Property Name="TerminalID" Type="int" Nullable="false" />
+          <Property Name="AlarmType" Type="int" Nullable="false" />
+          <Property Name="AlarmMore" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AlarmDate" Type="datetime" Nullable="false" />
+          <Property Name="LocalAlarmDate" Type="datetime" Nullable="false" />
+          <Property Name="ContactType" Type="int" Nullable="false" />
+          <Property Name="SpecCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelemetryValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ALARM_DETAILS">
+          <Key>
+            <PropertyRef Name="AlarmTypeId" />
+          </Key>
+          <Property Name="AlarmTypeId" Type="int" Nullable="false" />
+          <Property Name="AlarmDetail" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ARCHIVE">
+          <Key>
+            <PropertyRef Name="ArchiveID" />
+          </Key>
+          <Property Name="ArchiveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransCode" Type="int" Nullable="false" />
+          <Property Name="UnitID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateTimeLocal" Type="datetime" Nullable="false" />
+          <Property Name="DateTimeGps" Type="datetime" Nullable="false" />
+          <Property Name="CoordinateX" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="CoordinateY" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="Speed" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Direction" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Distance" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="Altitude" Type="int" Nullable="false" />
+          <Property Name="Ignition" Type="tinyint" Nullable="false" />
+          <Property Name="NumberOfSatellite" Type="tinyint" Nullable="false" />
+          <Property Name="Parameter1" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Parameter2" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="MsgType" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quarter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RolantiSuresi" Type="int" />
+          <Property Name="ipNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_CALISMA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" />
+          <Property Name="CalismaSuresi" Type="int" />
+          <Property Name="CalismaBaslamaId" Type="int" />
+          <Property Name="CalismaBitmeId" Type="int" />
+          <Property Name="CalismaBaslamaTarih" Type="datetime" />
+          <Property Name="CalismaBitmeTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBL_COMPANY">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UpperCompany" Type="int" />
+          <Property Name="logo" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Expire" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DATA_MESSAGES">
+          <Key>
+            <PropertyRef Name="MessagesID" />
+          </Key>
+          <Property Name="MessagesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="Komut" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Durum" Type="bit" Nullable="false" />
+          <Property Name="IstekId" Type="int" Nullable="false" />
+          <Property Name="MsgType" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TransCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_DETAY">
+          <Key>
+            <PropertyRef Name="DurakDetayId" />
+          </Key>
+          <Property Name="DurakDetayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="DurakId" Type="int" Nullable="false" />
+          <Property Name="GirisDurumDetay" Type="bit" Nullable="false" />
+          <Property Name="DurakDetayLat" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakDetayLng" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakDetayTarihi" Type="datetime" Nullable="false" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_GIRIS_CIKIS">
+          <Key>
+            <PropertyRef Name="DurakGirisCikisId" />
+          </Key>
+          <Property Name="DurakGirisCikisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="DurakId" Type="int" Nullable="false" />
+          <Property Name="DurakGirisId" Type="int" Nullable="false" />
+          <Property Name="DurakCikisId" Type="int" Nullable="false" />
+          <Property Name="GirisCikisSuresi" Type="int" Nullable="false" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_IHLAL_MASTER">
+          <Key>
+            <PropertyRef Name="DurakIhlaId" />
+          </Key>
+          <Property Name="DurakIhlaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DurakSureId" Type="int" Nullable="false" />
+          <Property Name="IhlalDurakId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_TANIM">
+          <Key>
+            <PropertyRef Name="DurakId" />
+          </Key>
+          <Property Name="DurakId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DurakAdi" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="DurakOrgLat" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakOrgLng" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMaxLat" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMaxLng" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMinLat" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMinLng" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakNo" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAKLAR_ARASI_SURE_TANIM">
+          <Key>
+            <PropertyRef Name="DurakSureId" />
+          </Key>
+          <Property Name="DurakSureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Durak1" Type="int" Nullable="false" />
+          <Property Name="Durak2" Type="int" Nullable="false" />
+          <Property Name="Sure" Type="int" Nullable="false" />
+          <Property Name="Yon" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAKLAR_ARASI_SURELER">
+          <Key>
+            <PropertyRef Name="SureId" />
+          </Key>
+          <Property Name="SureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="GirisDurakId" Type="int" Nullable="false" />
+          <Property Name="CikisDurakId" Type="int" Nullable="false" />
+          <Property Name="GirisCikisSuresi" Type="int" Nullable="false" />
+          <Property Name="Yon" Type="bit" Nullable="false" />
+          <Property Name="DurakGirisZaman" Type="datetime" />
+          <Property Name="DurakCikisZaman" Type="datetime" />
+          <Property Name="IhlalDurumu" Type="int" />
+          <Property Name="IhlalSuresi" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_DURMA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" />
+          <Property Name="DurmaSuresi" Type="int" />
+          <Property Name="DurmaBaslamaId" Type="int" />
+          <Property Name="DurmaBitmeId" Type="int" />
+          <Property Name="DurmaBaslamaTarih" Type="datetime" />
+          <Property Name="DurmaBitmeTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TBL_INDEKS_DETAILS">
+          <Key>
+            <PropertyRef Name="IndeksDegerId" />
+          </Key>
+          <Property Name="IndeksDegerId" Type="int" Nullable="false" />
+          <Property Name="IndeksBilgi" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_INVOICE">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="InvoiceMonthofDate" Type="tinyint" Nullable="false" />
+          <Property Name="InvoicePeriod" Type="tinyint" Nullable="false" />
+          <Property Name="InvoiceAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="InvoiceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_KOMUT">
+          <Key>
+            <PropertyRef Name="KomutId" />
+          </Key>
+          <Property Name="KomutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="Komut" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KomutTarihi" Type="datetime" Nullable="false" />
+          <Property Name="KomutDurum" Type="bit" Nullable="false" />
+          <Property Name="sms" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBL_MSG_TYPE">
+          <Key>
+            <PropertyRef Name="MsgTypeId" />
+          </Key>
+          <Property Name="MsgTypeId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PERSONNEL">
+          <Key>
+            <PropertyRef Name="PersonnelID" />
+          </Key>
+          <Property Name="PersonnelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RfidCardId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PROG_ANSWER">
+          <Key>
+            <PropertyRef Name="AnswerID" />
+          </Key>
+          <Property Name="AnswerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MsgType" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="TransCode" Type="int" Nullable="false" />
+          <Property Name="UnitID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CommandanData" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_READ_IDENTITY">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="Yonu" Type="tinyint" Nullable="false" />
+          <Property Name="RfidCardId" Type="int" Nullable="false" />
+          <Property Name="ReadDate" Type="datetime" Nullable="false" />
+          <Property Name="ArchiveId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_RFIDCARD">
+          <Key>
+            <PropertyRef Name="RfidCardId" />
+          </Key>
+          <Property Name="RfidCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RfidCardNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_SEFER_PAKETI">
+          <Key>
+            <PropertyRef Name="SeferId" />
+          </Key>
+          <Property Name="SeferId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalId" Type="int" Nullable="false" />
+          <Property Name="GpsVarmı" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="SeferBaslama" Type="datetime" Nullable="false" />
+          <Property Name="BaslangicEnlem" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="BaslangicBoylam" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="SeferBitme" Type="datetime" Nullable="false" />
+          <Property Name="BitisEnlem" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="BitisBoylam" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="GidilenYol" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MaximumHiz" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="SeferSuresi" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="MaximumHizSuresi" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="IlkHareketeKadarRolanti" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="DurmaRolantiSuresi" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="SonRolantiSuresi" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="SurucuBilgisi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasDistrict" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasQuarter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasStreet" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BitCity" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BitCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BitDistrict" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BitQuarter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BitStreet" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BaslangicNoktasi" Type="nvarchar" MaxLength="50" />
+          <Property Name="BitisNoktasi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_STATUS_DETAILS">
+          <Key>
+            <PropertyRef Name="StatusBitNo" />
+          </Key>
+          <Property Name="StatusBitNo" Type="int" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TERMINAL">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="TerminalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArchiveId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitIpAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccessoryType" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LastPositionX" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="LastPositionY" Type="decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="HistoryID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="TerminalStatus" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Battery" Type="tinyint" Nullable="false" />
+          <Property Name="AccStatus" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="OnlineDate" Type="datetime" Nullable="false" />
+          <Property Name="OfflineDate" Type="datetime" Nullable="false" />
+          <Property Name="PositionDate" Type="datetime" Nullable="false" />
+          <Property Name="VehicleDefaultDistance" Type="decimal" Precision="11" Scale="3" Nullable="false" />
+          <Property Name="DefaultTankValue" Type="decimal" Precision="8" Scale="3" Nullable="false" />
+          <Property Name="CurrentTankValue" Type="decimal" Precision="8" Scale="3" Nullable="false" />
+          <Property Name="PlateNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quarter" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GsmNumber" Type="nvarchar" MaxLength="12" />
+          <Property Name="MotorBlokajDurumu" Type="bit" />
+          <Property Name="KontakDurumu" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_USER">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+          <Property Name="LastConnectionDate" Type="datetime" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneHome" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PhoneWork" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PhoneGsm" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="testid" />
+          </Key>
+          <Property Name="testid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="nvarchar(max)" />
+        </EntityType>
+        <Function Name="DuraklamaZamaniGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="TerminalId" Type="float" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="DuraklarArasiSureGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="Yon" Type="bit" Mode="In" />
+          <Parameter Name="Start" Type="int" Mode="In" />
+          <Parameter Name="End" Type="int" Mode="In" />
+          <Parameter Name="Time" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="isBound" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="pointX" Type="decimal" Mode="In" />
+          <Parameter Name="pointY" Type="decimal" Mode="In" />
+          <Parameter Name="companyId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="isDurakIhlal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="Yon" Type="bit" Mode="In" />
+          <Parameter Name="Start" Type="int" Mode="In" />
+          <Parameter Name="End" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_AktiviteRaporuByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_AnaKullaniciAraclari" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UpperCompany" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_AracBilgileribyCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="bastarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bittarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_AracBilgileriByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminalID" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_AracListesi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_AracListesiByUpperCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_CalismaRaporuByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminalID" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_CalismaSuresiByCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="bastarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bittarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_CalismaSuresiByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminalID" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_CalismaSuresiInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DetayliMesafeRaporu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_DurakIhlalleribyCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyId" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_DuraklamaRaporu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_DurmaRaporuByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminalID" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_DurmaSuresiByCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="bastarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bittarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_DurmaSuresiByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminalID" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_DurmaSuresiInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Gecmis_Izleme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+          <Parameter Name="BaslamaZamani" Type="datetime" Mode="In" />
+          <Parameter Name="BitmeZamani" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_GetAnimatedDataByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+          <Parameter Name="archiveID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_IhlalListesiByCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="DtBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DtBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_IhlalListesiByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_KontakRaporu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_LoginBilgileri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_PersonelTakipBilgileriByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TerminalId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_RolantiSuresiByCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="bastarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bittarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_RolantiSuresiByTerminalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="terminalID" Type="int" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_Sample" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="zaman" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_SeferPaketi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+          <Parameter Name="Role" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_TumAraclarByCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ToplamCalismaSuresiGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="TerminalId" Type="float" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ToplamDurmaSuresiGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="TerminalId" Type="float" Mode="In" />
+          <Parameter Name="DateBaslama" Type="datetime" Mode="In" />
+          <Parameter Name="DateBitme" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ToplamKmGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="TerminalId" Type="float" Mode="In" />
+          <Parameter Name="BaslamaZamani" Type="datetime" Mode="In" />
+          <Parameter Name="BitmeZamani" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ToplamRolantiSuresiGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+          <Parameter Name="TerminalId" Type="float" Mode="In" />
+          <Parameter Name="baslamatarihi" Type="datetime" Mode="In" />
+          <Parameter Name="bitmetarihi" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="ATSModelStoreContainer">
+          <EntitySet Name="TBL_ACCESSORY" EntityType="Self.TBL_ACCESSORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ALARM" EntityType="Self.TBL_ALARM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ALARM_DETAILS" EntityType="Self.TBL_ALARM_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ARCHIVE" EntityType="Self.TBL_ARCHIVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CALISMA" EntityType="Self.TBL_CALISMA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_COMPANY" EntityType="Self.TBL_COMPANY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DATA_MESSAGES" EntityType="Self.TBL_DATA_MESSAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURAK_DETAY" EntityType="Self.TBL_DURAK_DETAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURAK_GIRIS_CIKIS" EntityType="Self.TBL_DURAK_GIRIS_CIKIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURAK_IHLAL_MASTER" EntityType="Self.TBL_DURAK_IHLAL_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURAK_TANIM" EntityType="Self.TBL_DURAK_TANIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURAKLAR_ARASI_SURE_TANIM" EntityType="Self.TBL_DURAKLAR_ARASI_SURE_TANIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURAKLAR_ARASI_SURELER" EntityType="Self.TBL_DURAKLAR_ARASI_SURELER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DURMA" EntityType="Self.TBL_DURMA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_INDEKS_DETAILS" EntityType="Self.TBL_INDEKS_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_INVOICE" EntityType="Self.TBL_INVOICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_KOMUT" EntityType="Self.TBL_KOMUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MSG_TYPE" EntityType="Self.TBL_MSG_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PERSONNEL" EntityType="Self.TBL_PERSONNEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PROG_ANSWER" EntityType="Self.TBL_PROG_ANSWER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_READ_IDENTITY" EntityType="Self.TBL_READ_IDENTITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_RFIDCARD" EntityType="Self.TBL_RFIDCARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SEFER_PAKETI" EntityType="Self.TBL_SEFER_PAKETI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_STATUS_DETAILS" EntityType="Self.TBL_STATUS_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_TERMINAL" EntityType="Self.TBL_TERMINAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ATSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_ACCESSORY">
+          <Key>
+            <PropertyRef Name="AccessoryTypeId" />
+          </Key>
+          <Property Name="AccessoryTypeId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessoryDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ALARM">
+          <Key>
+            <PropertyRef Name="AlarmID" />
+          </Key>
+          <Property Name="AlarmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArchiveID" Type="Int32" Nullable="false" />
+          <Property Name="TerminalID" Type="Int32" Nullable="false" />
+          <Property Name="AlarmType" Type="Int32" Nullable="false" />
+          <Property Name="AlarmMore" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AlarmDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocalAlarmDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ContactType" Type="Int32" Nullable="false" />
+          <Property Name="SpecCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelemetryValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ALARM_DETAILS">
+          <Key>
+            <PropertyRef Name="AlarmTypeId" />
+          </Key>
+          <Property Name="AlarmTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AlarmDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_ARCHIVE">
+          <Key>
+            <PropertyRef Name="ArchiveID" />
+          </Key>
+          <Property Name="ArchiveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransCode" Type="Int32" Nullable="false" />
+          <Property Name="UnitID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateTimeLocal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateTimeGps" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CoordinateX" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="CoordinateY" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="Speed" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Direction" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Distance" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="Altitude" Type="Int32" Nullable="false" />
+          <Property Name="Ignition" Type="Byte" Nullable="false" />
+          <Property Name="NumberOfSatellite" Type="Byte" Nullable="false" />
+          <Property Name="Parameter1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parameter2" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MsgType" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RolantiSuresi" Type="Int32" />
+          <Property Name="ipNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_CALISMA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" />
+          <Property Name="CalismaSuresi" Type="Int32" />
+          <Property Name="CalismaBaslamaId" Type="Int32" />
+          <Property Name="CalismaBitmeId" Type="Int32" />
+          <Property Name="CalismaBaslamaTarih" Type="DateTime" Precision="3" />
+          <Property Name="CalismaBitmeTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TBL_COMPANY">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UpperCompany" Type="Int32" />
+          <Property Name="logo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Expire" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DATA_MESSAGES">
+          <Key>
+            <PropertyRef Name="MessagesID" />
+          </Key>
+          <Property Name="MessagesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="Komut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Durum" Type="Boolean" Nullable="false" />
+          <Property Name="IstekId" Type="Int32" Nullable="false" />
+          <Property Name="MsgType" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TransCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_DETAY">
+          <Key>
+            <PropertyRef Name="DurakDetayId" />
+          </Key>
+          <Property Name="DurakDetayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="DurakId" Type="Int32" Nullable="false" />
+          <Property Name="GirisDurumDetay" Type="Boolean" Nullable="false" />
+          <Property Name="DurakDetayLat" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakDetayLng" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakDetayTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_GIRIS_CIKIS">
+          <Key>
+            <PropertyRef Name="DurakGirisCikisId" />
+          </Key>
+          <Property Name="DurakGirisCikisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="DurakId" Type="Int32" Nullable="false" />
+          <Property Name="DurakGirisId" Type="Int32" Nullable="false" />
+          <Property Name="DurakCikisId" Type="Int32" Nullable="false" />
+          <Property Name="GirisCikisSuresi" Type="Int32" Nullable="false" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_IHLAL_MASTER">
+          <Key>
+            <PropertyRef Name="DurakIhlaId" />
+          </Key>
+          <Property Name="DurakIhlaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DurakSureId" Type="Int32" Nullable="false" />
+          <Property Name="IhlalDurakId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAK_TANIM">
+          <Key>
+            <PropertyRef Name="DurakId" />
+          </Key>
+          <Property Name="DurakId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DurakAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DurakOrgLat" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakOrgLng" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMaxLat" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMaxLng" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMinLat" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakMinLng" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="DurakNo" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAKLAR_ARASI_SURE_TANIM">
+          <Key>
+            <PropertyRef Name="DurakSureId" />
+          </Key>
+          <Property Name="DurakSureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Durak1" Type="Int32" Nullable="false" />
+          <Property Name="Durak2" Type="Int32" Nullable="false" />
+          <Property Name="Sure" Type="Int32" Nullable="false" />
+          <Property Name="Yon" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_DURAKLAR_ARASI_SURELER">
+          <Key>
+            <PropertyRef Name="SureId" />
+          </Key>
+          <Property Name="SureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="GirisDurakId" Type="Int32" Nullable="false" />
+          <Property Name="CikisDurakId" Type="Int32" Nullable="false" />
+          <Property Name="GirisCikisSuresi" Type="Int32" Nullable="false" />
+          <Property Name="Yon" Type="Boolean" Nullable="false" />
+          <Property Name="DurakGirisZaman" Type="DateTime" Precision="3" />
+          <Property Name="DurakCikisZaman" Type="DateTime" Precision="3" />
+          <Property Name="IhlalDurumu" Type="Int32" />
+          <Property Name="IhlalSuresi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_DURMA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" />
+          <Property Name="DurmaSuresi" Type="Int32" />
+          <Property Name="DurmaBaslamaId" Type="Int32" />
+          <Property Name="DurmaBitmeId" Type="Int32" />
+          <Property Name="DurmaBaslamaTarih" Type="DateTime" Precision="3" />
+          <Property Name="DurmaBitmeTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TBL_INDEKS_DETAILS">
+          <Key>
+            <PropertyRef Name="IndeksDegerId" />
+          </Key>
+          <Property Name="IndeksDegerId" Type="Int32" Nullable="false" />
+          <Property Name="IndeksBilgi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_INVOICE">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceMonthofDate" Type="Byte" Nullable="false" />
+          <Property Name="InvoicePeriod" Type="Byte" Nullable="false" />
+          <Property Name="InvoiceAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="InvoiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_KOMUT">
+          <Key>
+            <PropertyRef Name="KomutId" />
+          </Key>
+          <Property Name="KomutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="Komut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KomutTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KomutDurum" Type="Boolean" Nullable="false" />
+          <Property Name="sms" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TBL_MSG_TYPE">
+          <Key>
+            <PropertyRef Name="MsgTypeId" />
+          </Key>
+          <Property Name="MsgTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PERSONNEL">
+          <Key>
+            <PropertyRef Name="PersonnelID" />
+          </Key>
+          <Property Name="PersonnelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RfidCardId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_PROG_ANSWER">
+          <Key>
+            <PropertyRef Name="AnswerID" />
+          </Key>
+          <Property Name="AnswerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MsgType" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TransCode" Type="Int32" Nullable="false" />
+          <Property Name="UnitID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommandanData" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_READ_IDENTITY">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="Yonu" Type="Byte" Nullable="false" />
+          <Property Name="RfidCardId" Type="Int32" Nullable="false" />
+          <Property Name="ReadDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArchiveId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_RFIDCARD">
+          <Key>
+            <PropertyRef Name="RfidCardId" />
+          </Key>
+          <Property Name="RfidCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RfidCardNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_SEFER_PAKETI">
+          <Key>
+            <PropertyRef Name="SeferId" />
+          </Key>
+          <Property Name="SeferId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalId" Type="Int32" Nullable="false" />
+          <Property Name="GpsVarmı" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SeferBaslama" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BaslangicEnlem" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="BaslangicBoylam" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="SeferBitme" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BitisEnlem" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="BitisBoylam" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="GidilenYol" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MaximumHiz" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="SeferSuresi" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="MaximumHizSuresi" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="IlkHareketeKadarRolanti" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="DurmaRolantiSuresi" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="SonRolantiSuresi" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="SurucuBilgisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasDistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasQuarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BitCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BitCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BitDistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BitQuarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BitStreet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BaslangicNoktasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BitisNoktasi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_STATUS_DETAILS">
+          <Key>
+            <PropertyRef Name="StatusBitNo" />
+          </Key>
+          <Property Name="StatusBitNo" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_TERMINAL">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="TerminalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArchiveId" Type="Int32" Nullable="false" />
+          <Property Name="UnitId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitIpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessoryType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastPositionX" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="LastPositionY" Type="Decimal" Precision="7" Scale="5" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="HistoryID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TerminalStatus" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Battery" Type="Byte" Nullable="false" />
+          <Property Name="AccStatus" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="OnlineDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OfflineDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PositionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VehicleDefaultDistance" Type="Decimal" Precision="11" Scale="3" Nullable="false" />
+          <Property Name="DefaultTankValue" Type="Decimal" Precision="8" Scale="3" Nullable="false" />
+          <Property Name="CurrentTankValue" Type="Decimal" Precision="8" Scale="3" Nullable="false" />
+          <Property Name="PlateNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GsmNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MotorBlokajDurumu" Type="Boolean" />
+          <Property Name="KontakDurumu" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_USER">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastConnectionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneHome" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneWork" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneGsm" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="testid" />
+          </Key>
+          <Property Name="testid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AracTakipDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_ACCESSORY" EntityType="Self.TBL_ACCESSORY" />
+          <EntitySet Name="TBL_ALARM" EntityType="Self.TBL_ALARM" />
+          <EntitySet Name="TBL_ALARM_DETAILS" EntityType="Self.TBL_ALARM_DETAILS" />
+          <EntitySet Name="TBL_ARCHIVE" EntityType="Self.TBL_ARCHIVE" />
+          <EntitySet Name="TBL_CALISMA" EntityType="Self.TBL_CALISMA" />
+          <EntitySet Name="TBL_COMPANY" EntityType="Self.TBL_COMPANY" />
+          <EntitySet Name="TBL_DATA_MESSAGES" EntityType="Self.TBL_DATA_MESSAGES" />
+          <EntitySet Name="TBL_DURAK_DETAY" EntityType="Self.TBL_DURAK_DETAY" />
+          <EntitySet Name="TBL_DURAK_GIRIS_CIKIS" EntityType="Self.TBL_DURAK_GIRIS_CIKIS" />
+          <EntitySet Name="TBL_DURAK_IHLAL_MASTER" EntityType="Self.TBL_DURAK_IHLAL_MASTER" />
+          <EntitySet Name="TBL_DURAK_TANIM" EntityType="Self.TBL_DURAK_TANIM" />
+          <EntitySet Name="TBL_DURAKLAR_ARASI_SURE_TANIM" EntityType="Self.TBL_DURAKLAR_ARASI_SURE_TANIM" />
+          <EntitySet Name="TBL_DURAKLAR_ARASI_SURELER" EntityType="Self.TBL_DURAKLAR_ARASI_SURELER" />
+          <EntitySet Name="TBL_DURMA" EntityType="Self.TBL_DURMA" />
+          <EntitySet Name="TBL_INDEKS_DETAILS" EntityType="Self.TBL_INDEKS_DETAILS" />
+          <EntitySet Name="TBL_INVOICE" EntityType="Self.TBL_INVOICE" />
+          <EntitySet Name="TBL_KOMUT" EntityType="Self.TBL_KOMUT" />
+          <EntitySet Name="TBL_MSG_TYPE" EntityType="Self.TBL_MSG_TYPE" />
+          <EntitySet Name="TBL_PERSONNEL" EntityType="Self.TBL_PERSONNEL" />
+          <EntitySet Name="TBL_PROG_ANSWER" EntityType="Self.TBL_PROG_ANSWER" />
+          <EntitySet Name="TBL_READ_IDENTITY" EntityType="Self.TBL_READ_IDENTITY" />
+          <EntitySet Name="TBL_RFIDCARD" EntityType="Self.TBL_RFIDCARD" />
+          <EntitySet Name="TBL_SEFER_PAKETI" EntityType="Self.TBL_SEFER_PAKETI" />
+          <EntitySet Name="TBL_STATUS_DETAILS" EntityType="Self.TBL_STATUS_DETAILS" />
+          <EntitySet Name="TBL_TERMINAL" EntityType="Self.TBL_TERMINAL" />
+          <EntitySet Name="TBL_USER" EntityType="Self.TBL_USER" />
+          <EntitySet Name="test" EntityType="Self.test" />
+          <FunctionImport Name="SP_AktiviteRaporuByTerminalId" ReturnType="Collection(ATSModel.SP_AktiviteRaporuByTerminalId_Result)">
+            <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+            <Parameter Name="DateBitme" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AnaKullaniciAraclari" ReturnType="Collection(ATSModel.SP_AnaKullaniciAraclari_Result)">
+          <Parameter Name="UpperCompany" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AracBilgileribyCompanyId" ReturnType="Collection(ATSModel.SP_AracBilgileribyCompanyId_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="bastarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bittarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AracBilgileriByTerminalId" ReturnType="Collection(ATSModel.SP_AracBilgileriByTerminalId_Result)">
+            <Parameter Name="terminalID" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AracListesi" ReturnType="Collection(ATSModel.SP_AracListesi_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AracListesiByUpperCompanyId" ReturnType="Collection(ATSModel.SP_AracListesiByUpperCompanyId_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CalismaRaporuByTerminalId" ReturnType="Collection(ATSModel.SP_CalismaRaporuByTerminalId_Result)">
+            <Parameter Name="terminalID" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CalismaSuresiByCompanyId" ReturnType="Collection(ATSModel.SP_CalismaSuresiByCompanyId_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="bastarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bittarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CalismaSuresiByTerminalId" ReturnType="Collection(ATSModel.SP_CalismaSuresiByTerminalId_Result)">
+            <Parameter Name="terminalID" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CalismaSuresiInsert">
+          <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DetayliMesafeRaporu" ReturnType="Collection(ATSModel.SP_DetayliMesafeRaporu_Result)">
+            <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+            <Parameter Name="DateBitme" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DurakIhlalleribyCompanyId" ReturnType="Collection(ATSModel.SP_DurakIhlalleribyCompanyId_Result)">
+            <Parameter Name="companyId" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DuraklamaRaporu" ReturnType="Collection(ATSModel.SP_DuraklamaRaporu_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DurmaRaporuByTerminalId" ReturnType="Collection(ATSModel.SP_DurmaRaporuByTerminalId_Result)">
+            <Parameter Name="terminalID" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DurmaSuresiByCompanyId" ReturnType="Collection(ATSModel.SP_DurmaSuresiByCompanyId_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="bastarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bittarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DurmaSuresiByTerminalId" ReturnType="Collection(ATSModel.SP_DurmaSuresiByTerminalId_Result)">
+            <Parameter Name="terminalID" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DurmaSuresiInsert">
+          <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Gecmis_Izleme" ReturnType="Collection(ATSModel.SP_Gecmis_Izleme_Result)">
+            <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+            <Parameter Name="BaslamaZamani" Mode="In" Type="DateTime" />
+            <Parameter Name="BitmeZamani" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetAnimatedDataByTerminalId" ReturnType="Collection(ATSModel.SP_GetAnimatedDataByTerminalId_Result)">
+            <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+            <Parameter Name="archiveID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ATSModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ATSModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_IhlalListesiByCompanyId" ReturnType="Collection(ATSModel.SP_IhlalListesiByCompanyId_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="DtBaslama" Mode="In" Type="DateTime" />
+            <Parameter Name="DtBitme" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_IhlalListesiByTerminalId" ReturnType="Collection(ATSModel.SP_IhlalListesiByTerminalId_Result)">
+            <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+            <Parameter Name="DateBitme" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_KontakRaporu" ReturnType="Collection(ATSModel.SP_KontakRaporu_Result)">
+          <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LoginBilgileri" ReturnType="Collection(ATSModel.SP_LoginBilgileri_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_PersonelTakipBilgileriByTerminalId" ReturnType="Collection(ATSModel.SP_PersonelTakipBilgileriByTerminalId_Result)">
+            <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+            <Parameter Name="DateBitme" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RolantiSuresiByCompanyId" ReturnType="Collection(ATSModel.SP_RolantiSuresiByCompanyId_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="bastarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bittarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RolantiSuresiByTerminalId" ReturnType="Collection(ATSModel.SP_RolantiSuresiByTerminalId_Result)">
+            <Parameter Name="terminalID" Mode="In" Type="Int32" />
+            <Parameter Name="baslamatarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="bitmetarihi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Sample" ReturnType="Collection(ATSModel.SP_Sample_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="zaman" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SeferPaketi" ReturnType="Collection(ATSModel.SP_SeferPaketi_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBaslama" Mode="In" Type="DateTime" />
+            <Parameter Name="DateBitme" Mode="In" Type="DateTime" />
+            <Parameter Name="Role" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TumAraclarByCompanyId" ReturnType="Collection(ATSModel.SP_TumAraclarByCompanyId_Result)">
+          <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_AktiviteRaporuByTerminalId_Result">
+          <Property Type="String" Name="STATU" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="DateTime" Name="DateTimeGps" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="UnixTime" Nullable="true" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Distance" Nullable="false" Precision="10" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="SP_AnaKullaniciAraclari_Result">
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Byte" Name="Ignition" Nullable="true" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="true" Precision="6" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_AracBilgileribyCompanyId_Result">
+          <Property Type="Boolean" Name="depoDurum" Nullable="false" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="SonVeri" Nullable="true" />
+          <Property Type="Int32" Name="ihlalSayisi" Nullable="false" />
+          <Property Type="Double" Name="mesafe" Nullable="false" />
+          <Property Type="Double" Name="CalismaSuresi" Nullable="false" />
+          <Property Type="Double" Name="DurmaSuresi" Nullable="false" />
+          <Property Type="Int32" Name="RolantiSuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="toplamKm" Nullable="true" Precision="13" Scale="4" />
+          <Property Type="Byte" Name="Ignition" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveID" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SurucuAdi" Nullable="false" MaxLength="101" />
+        </ComplexType>
+        <ComplexType Name="SP_AracBilgileriByTerminalId_Result">
+          <Property Type="Boolean" Name="depoDurum" Nullable="false" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="SonVeri" Nullable="true" />
+          <Property Type="Int32" Name="ihlalSayisi" Nullable="false" />
+          <Property Type="Double" Name="mesafe" Nullable="false" />
+          <Property Type="Double" Name="CalismaSuresi" Nullable="false" />
+          <Property Type="Double" Name="DurmaSuresi" Nullable="false" />
+          <Property Type="Int32" Name="RolantiSuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="toplamKm" Nullable="true" Precision="13" Scale="4" />
+          <Property Type="Byte" Name="Ignition" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveID" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="SurucuAdi" Nullable="false" MaxLength="101" />
+        </ComplexType>
+        <ComplexType Name="SP_AracListesi_Result">
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="Byte" Name="Ignition" Nullable="true" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="true" Precision="6" Scale="3" />
+          <Property Type="Decimal" Name="Distance" Nullable="true" Precision="10" Scale="4" />
+          <Property Type="Double" Name="Mesafe" Nullable="false" />
+          <Property Type="Byte" Name="Ignition1" Nullable="true" />
+          <Property Type="Int32" Name="sonveri" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_AracListesiByUpperCompanyId_Result">
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="Byte" Name="Ignition" Nullable="true" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="true" Precision="6" Scale="3" />
+          <Property Type="Decimal" Name="Distance" Nullable="true" Precision="10" Scale="4" />
+          <Property Type="Double" Name="Mesafe" Nullable="false" />
+          <Property Type="Byte" Name="Ignition1" Nullable="true" />
+          <Property Type="Int32" Name="sonveri" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CalismaRaporuByTerminalId_Result">
+          <Property Type="DateTime" Name="baslamazamani" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="bitmezamani" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CalismaSuresi" Nullable="false" />
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Quarter" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_CalismaSuresiByCompanyId_Result">
+          <Property Type="Double" Name="calismasuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_CalismaSuresiByTerminalId_Result">
+          <Property Type="Double" Name="calismasuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_DetayliMesafeRaporu_Result">
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="7" />
+          <Property Type="Decimal" Name="Distance" Nullable="true" Precision="10" Scale="4" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="TerminalId" Nullable="true" />
+          <Property Type="Int32" Name="CalismaSuresi" Nullable="true" />
+          <Property Type="Int32" Name="CalismaBaslamaId" Nullable="true" />
+          <Property Type="Int32" Name="CalismaBitmeId" Nullable="true" />
+          <Property Type="DateTime" Name="CalismaBaslamaTarih" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="CalismaBitmeTarih" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ArchiveID" Nullable="true" />
+          <Property Type="Int32" Name="TransCode" Nullable="true" />
+          <Property Type="String" Name="UnitID" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="DateTimeLocal" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DateTimeGps" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="true" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="true" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Speed" Nullable="true" Precision="6" Scale="3" />
+          <Property Type="Decimal" Name="Direction" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="Distance1" Nullable="true" Precision="10" Scale="4" />
+          <Property Type="Int32" Name="Altitude" Nullable="true" />
+          <Property Type="Byte" Name="Ignition" Nullable="true" />
+          <Property Type="Byte" Name="NumberOfSatellite" Nullable="true" />
+          <Property Type="String" Name="Parameter1" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Parameter2" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="MsgType" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="true" />
+          <Property Type="Int32" Name="RolantiSuresi" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_DurakIhlalleribyCompanyId_Result">
+          <Property Type="String" Name="IhlalName" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="GirisDurak" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CikisDurak" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="SureId" Nullable="false" />
+          <Property Type="Int32" Name="GirisCikisSuresi" Nullable="false" />
+          <Property Type="DateTime" Name="DurakGirisZaman" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DurakCikisZaman" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Yon" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_DuraklamaRaporu_Result">
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="SeferBaslama" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="SeferBitme" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="SeferSuresi" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="Decimal" Name="GidilenYol" Nullable="false" Precision="10" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="SP_DurmaRaporuByTerminalId_Result">
+          <Property Type="DateTime" Name="BaslangicZamani" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="BitisZamani" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="DuraklamaSuresi" Nullable="false" />
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Quarter" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_DurmaSuresiByCompanyId_Result">
+          <Property Type="Double" Name="durmasuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_DurmaSuresiByTerminalId_Result">
+          <Property Type="Double" Name="durmasuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_Gecmis_Izleme_Result">
+          <Property Type="DateTime" Name="DateTimeGps" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DateTimeLocal" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TerminalID" Nullable="true" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="ArchiveID" Nullable="false" />
+          <Property Type="String" Name="UnitID" Nullable="false" MaxLength="20" />
+          <Property Type="Byte" Name="Ignition" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="SP_GetAnimatedDataByTerminalId_Result">
+          <Property Type="DateTime" Name="DateTimeGps" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DateTimeLocal" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TerminalID" Nullable="true" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="ArchiveID" Nullable="false" />
+          <Property Type="String" Name="UnitID" Nullable="false" MaxLength="20" />
+          <Property Type="Byte" Name="Ignition" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_IhlalListesiByCompanyId_Result">
+          <Property Type="Int32" Name="AlarmID" Nullable="false" />
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AlarmDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="AlarmDetail" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="true" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="true" Precision="7" Scale="5" />
+          <Property Type="String" Name="Quarter" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="SP_IhlalListesiByTerminalId_Result">
+          <Property Type="Int32" Name="AlarmID" Nullable="false" />
+          <Property Type="String" Name="PlateNo" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AlarmDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="AlarmDetail" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="true" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="true" Precision="7" Scale="5" />
+          <Property Type="String" Name="Quarter" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="SP_KontakRaporu_Result">
+          <Property Type="DateTime" Name="AlarmDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="AlarmID" Nullable="true" />
+          <Property Type="Int32" Name="TerminalID" Nullable="true" />
+          <Property Type="Int32" Name="AlarmType" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_LoginBilgileri_Result">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UpperCompany" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_PersonelTakipBilgileriByTerminalId_Result">
+          <Property Type="String" Name="RfidCardNumber" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="STATU" Nullable="false" MaxLength="13" />
+          <Property Type="DateTime" Name="ReadDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Quarter" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="true" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Durak" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="Yonu" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_RolantiSuresiByCompanyId_Result">
+          <Property Type="Int32" Name="rolantisuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_RolantiSuresiByTerminalId_Result">
+          <Property Type="Int32" Name="rolantisuresi" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_Sample_Result">
+          <Property Type="DateTime" Name="DateTimeGps" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DateTimeLocal" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TerminalID" Nullable="true" />
+          <Property Type="Decimal" Name="CoordinateX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="CoordinateY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="ArchiveID" Nullable="false" />
+          <Property Type="String" Name="UnitID" Nullable="false" MaxLength="20" />
+          <Property Type="Byte" Name="Ignition" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="false" Precision="6" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="SP_SeferPaketi_Result">
+          <Property Type="Double" Name="Mesafe" Nullable="false" />
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="String" Name="UnitId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitModel" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UnitIpAddress" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccessoryType" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Int32" Name="CompanyID" Nullable="false" />
+          <Property Type="Int32" Name="HistoryID" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="TerminalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Byte" Name="Battery" Nullable="false" />
+          <Property Type="Boolean" Name="AccStatus" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="OnlineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="OfflineDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PositionDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="VehicleDefaultDistance" Nullable="false" Precision="11" Scale="3" />
+          <Property Type="Decimal" Name="DefaultTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="Decimal" Name="CurrentTankValue" Nullable="false" Precision="8" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Quarter" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" />
+          <Property Type="String" Name="GsmNumber" Nullable="true" MaxLength="12" />
+          <Property Type="Boolean" Name="MotorBlokajDurumu" Nullable="true" />
+          <Property Type="Int32" Name="KontakDurumu" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_TumAraclarByCompanyId_Result">
+          <Property Type="Int32" Name="TerminalID" Nullable="false" />
+          <Property Type="Decimal" Name="LastPositionX" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="LastPositionY" Nullable="false" Precision="7" Scale="5" />
+          <Property Type="Decimal" Name="Direction" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Byte" Name="Ignition" Nullable="true" />
+          <Property Type="Int32" Name="ArchiveId" Nullable="false" />
+          <Property Type="Decimal" Name="Speed" Nullable="true" Precision="6" Scale="3" />
+          <Property Type="String" Name="PlateNo" Nullable="false" MaxLength="15" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ATSModelStoreContainer" CdmEntityContainer="AracTakipDb">
+          <EntitySetMapping Name="TBL_ACCESSORY">
+            <EntityTypeMapping TypeName="ATSModel.TBL_ACCESSORY">
+              <MappingFragment StoreEntitySet="TBL_ACCESSORY">
+                <ScalarProperty Name="AccessoryTypeId" ColumnName="AccessoryTypeId" />
+                <ScalarProperty Name="AccessoryDetail" ColumnName="AccessoryDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ALARM">
+            <EntityTypeMapping TypeName="ATSModel.TBL_ALARM">
+              <MappingFragment StoreEntitySet="TBL_ALARM">
+                <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="AlarmType" ColumnName="AlarmType" />
+                <ScalarProperty Name="AlarmMore" ColumnName="AlarmMore" />
+                <ScalarProperty Name="AlarmDate" ColumnName="AlarmDate" />
+                <ScalarProperty Name="LocalAlarmDate" ColumnName="LocalAlarmDate" />
+                <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+                <ScalarProperty Name="SpecCode" ColumnName="SpecCode" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="TelemetryValue" ColumnName="TelemetryValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ALARM_DETAILS">
+            <EntityTypeMapping TypeName="ATSModel.TBL_ALARM_DETAILS">
+              <MappingFragment StoreEntitySet="TBL_ALARM_DETAILS">
+                <ScalarProperty Name="AlarmTypeId" ColumnName="AlarmTypeId" />
+                <ScalarProperty Name="AlarmDetail" ColumnName="AlarmDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ARCHIVE">
+            <EntityTypeMapping TypeName="ATSModel.TBL_ARCHIVE">
+              <MappingFragment StoreEntitySet="TBL_ARCHIVE">
+                <ScalarProperty Name="ipNumber" ColumnName="ipNumber" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="TransCode" ColumnName="TransCode" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="DateTimeLocal" ColumnName="DateTimeLocal" />
+                <ScalarProperty Name="DateTimeGps" ColumnName="DateTimeGps" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Altitude" ColumnName="Altitude" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="NumberOfSatellite" ColumnName="NumberOfSatellite" />
+                <ScalarProperty Name="Parameter1" ColumnName="Parameter1" />
+                <ScalarProperty Name="Parameter2" ColumnName="Parameter2" />
+                <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="RolantiSuresi" ColumnName="RolantiSuresi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CALISMA">
+            <EntityTypeMapping TypeName="ATSModel.TBL_CALISMA">
+              <MappingFragment StoreEntitySet="TBL_CALISMA">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="CalismaBaslamaId" ColumnName="CalismaBaslamaId" />
+                <ScalarProperty Name="CalismaBitmeId" ColumnName="CalismaBitmeId" />
+                <ScalarProperty Name="CalismaBaslamaTarih" ColumnName="CalismaBaslamaTarih" />
+                <ScalarProperty Name="CalismaBitmeTarih" ColumnName="CalismaBitmeTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_COMPANY">
+            <EntityTypeMapping TypeName="ATSModel.TBL_COMPANY">
+              <MappingFragment StoreEntitySet="TBL_COMPANY">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UpperCompany" ColumnName="UpperCompany" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="Expire" ColumnName="Expire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DATA_MESSAGES">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DATA_MESSAGES">
+              <MappingFragment StoreEntitySet="TBL_DATA_MESSAGES">
+                <ScalarProperty Name="MessagesID" ColumnName="MessagesID" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="Komut" ColumnName="Komut" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="IstekId" ColumnName="IstekId" />
+                <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+                <ScalarProperty Name="TransCode" ColumnName="TransCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURAK_DETAY">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURAK_DETAY">
+              <MappingFragment StoreEntitySet="TBL_DURAK_DETAY">
+                <ScalarProperty Name="DurakDetayId" ColumnName="DurakDetayId" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="DurakId" ColumnName="DurakId" />
+                <ScalarProperty Name="GirisDurumDetay" ColumnName="GirisDurumDetay" />
+                <ScalarProperty Name="DurakDetayLat" ColumnName="DurakDetayLat" />
+                <ScalarProperty Name="DurakDetayLng" ColumnName="DurakDetayLng" />
+                <ScalarProperty Name="DurakDetayTarihi" ColumnName="DurakDetayTarihi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURAK_GIRIS_CIKIS">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURAK_GIRIS_CIKIS">
+              <MappingFragment StoreEntitySet="TBL_DURAK_GIRIS_CIKIS">
+                <ScalarProperty Name="DurakGirisCikisId" ColumnName="DurakGirisCikisId" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="DurakId" ColumnName="DurakId" />
+                <ScalarProperty Name="DurakGirisId" ColumnName="DurakGirisId" />
+                <ScalarProperty Name="DurakCikisId" ColumnName="DurakCikisId" />
+                <ScalarProperty Name="GirisCikisSuresi" ColumnName="GirisCikisSuresi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURAK_IHLAL_MASTER">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURAK_IHLAL_MASTER">
+              <MappingFragment StoreEntitySet="TBL_DURAK_IHLAL_MASTER">
+                <ScalarProperty Name="DurakIhlaId" ColumnName="DurakIhlaId" />
+                <ScalarProperty Name="DurakSureId" ColumnName="DurakSureId" />
+                <ScalarProperty Name="IhlalDurakId" ColumnName="IhlalDurakId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURAK_TANIM">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURAK_TANIM">
+              <MappingFragment StoreEntitySet="TBL_DURAK_TANIM">
+                <ScalarProperty Name="DurakId" ColumnName="DurakId" />
+                <ScalarProperty Name="DurakAdi" ColumnName="DurakAdi" />
+                <ScalarProperty Name="DurakOrgLat" ColumnName="DurakOrgLat" />
+                <ScalarProperty Name="DurakOrgLng" ColumnName="DurakOrgLng" />
+                <ScalarProperty Name="DurakMaxLat" ColumnName="DurakMaxLat" />
+                <ScalarProperty Name="DurakMaxLng" ColumnName="DurakMaxLng" />
+                <ScalarProperty Name="DurakMinLat" ColumnName="DurakMinLat" />
+                <ScalarProperty Name="DurakMinLng" ColumnName="DurakMinLng" />
+                <ScalarProperty Name="DurakNo" ColumnName="DurakNo" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURAKLAR_ARASI_SURE_TANIM">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURAKLAR_ARASI_SURE_TANIM">
+              <MappingFragment StoreEntitySet="TBL_DURAKLAR_ARASI_SURE_TANIM">
+                <ScalarProperty Name="DurakSureId" ColumnName="DurakSureId" />
+                <ScalarProperty Name="Durak1" ColumnName="Durak1" />
+                <ScalarProperty Name="Durak2" ColumnName="Durak2" />
+                <ScalarProperty Name="Sure" ColumnName="Sure" />
+                <ScalarProperty Name="Yon" ColumnName="Yon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURAKLAR_ARASI_SURELER">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURAKLAR_ARASI_SURELER">
+              <MappingFragment StoreEntitySet="TBL_DURAKLAR_ARASI_SURELER">
+                <ScalarProperty Name="SureId" ColumnName="SureId" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="GirisDurakId" ColumnName="GirisDurakId" />
+                <ScalarProperty Name="CikisDurakId" ColumnName="CikisDurakId" />
+                <ScalarProperty Name="GirisCikisSuresi" ColumnName="GirisCikisSuresi" />
+                <ScalarProperty Name="Yon" ColumnName="Yon" />
+                <ScalarProperty Name="DurakGirisZaman" ColumnName="DurakGirisZaman" />
+                <ScalarProperty Name="DurakCikisZaman" ColumnName="DurakCikisZaman" />
+                <ScalarProperty Name="IhlalDurumu" ColumnName="IhlalDurumu" />
+                <ScalarProperty Name="IhlalSuresi" ColumnName="IhlalSuresi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DURMA">
+            <EntityTypeMapping TypeName="ATSModel.TBL_DURMA">
+              <MappingFragment StoreEntitySet="TBL_DURMA">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="DurmaSuresi" ColumnName="DurmaSuresi" />
+                <ScalarProperty Name="DurmaBaslamaId" ColumnName="DurmaBaslamaId" />
+                <ScalarProperty Name="DurmaBitmeId" ColumnName="DurmaBitmeId" />
+                <ScalarProperty Name="DurmaBaslamaTarih" ColumnName="DurmaBaslamaTarih" />
+                <ScalarProperty Name="DurmaBitmeTarih" ColumnName="DurmaBitmeTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_INDEKS_DETAILS">
+            <EntityTypeMapping TypeName="ATSModel.TBL_INDEKS_DETAILS">
+              <MappingFragment StoreEntitySet="TBL_INDEKS_DETAILS">
+                <ScalarProperty Name="IndeksDegerId" ColumnName="IndeksDegerId" />
+                <ScalarProperty Name="IndeksBilgi" ColumnName="IndeksBilgi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_INVOICE">
+            <EntityTypeMapping TypeName="ATSModel.TBL_INVOICE">
+              <MappingFragment StoreEntitySet="TBL_INVOICE">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="InvoiceMonthofDate" ColumnName="InvoiceMonthofDate" />
+                <ScalarProperty Name="InvoicePeriod" ColumnName="InvoicePeriod" />
+                <ScalarProperty Name="InvoiceAmount" ColumnName="InvoiceAmount" />
+                <ScalarProperty Name="InvoiceName" ColumnName="InvoiceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_KOMUT">
+            <EntityTypeMapping TypeName="ATSModel.TBL_KOMUT">
+              <MappingFragment StoreEntitySet="TBL_KOMUT">
+                <ScalarProperty Name="sms" ColumnName="sms" />
+                <ScalarProperty Name="KomutId" ColumnName="KomutId" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="Komut" ColumnName="Komut" />
+                <ScalarProperty Name="KomutTarihi" ColumnName="KomutTarihi" />
+                <ScalarProperty Name="KomutDurum" ColumnName="KomutDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MSG_TYPE">
+            <EntityTypeMapping TypeName="ATSModel.TBL_MSG_TYPE">
+              <MappingFragment StoreEntitySet="TBL_MSG_TYPE">
+                <ScalarProperty Name="MsgTypeId" ColumnName="MsgTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PERSONNEL">
+            <EntityTypeMapping TypeName="ATSModel.TBL_PERSONNEL">
+              <MappingFragment StoreEntitySet="TBL_PERSONNEL">
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RfidCardId" ColumnName="RfidCardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PROG_ANSWER">
+            <EntityTypeMapping TypeName="ATSModel.TBL_PROG_ANSWER">
+              <MappingFragment StoreEntitySet="TBL_PROG_ANSWER">
+                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+                <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+                <ScalarProperty Name="TransCode" ColumnName="TransCode" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="CommandanData" ColumnName="CommandanData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_READ_IDENTITY">
+            <EntityTypeMapping TypeName="ATSModel.TBL_READ_IDENTITY">
+              <MappingFragment StoreEntitySet="TBL_READ_IDENTITY">
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="Yonu" ColumnName="Yonu" />
+                <ScalarProperty Name="RfidCardId" ColumnName="RfidCardId" />
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_RFIDCARD">
+            <EntityTypeMapping TypeName="ATSModel.TBL_RFIDCARD">
+              <MappingFragment StoreEntitySet="TBL_RFIDCARD">
+                <ScalarProperty Name="RfidCardId" ColumnName="RfidCardId" />
+                <ScalarProperty Name="RfidCardNumber" ColumnName="RfidCardNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SEFER_PAKETI">
+            <EntityTypeMapping TypeName="ATSModel.TBL_SEFER_PAKETI">
+              <MappingFragment StoreEntitySet="TBL_SEFER_PAKETI">
+                <ScalarProperty Name="BitisNoktasi" ColumnName="BitisNoktasi" />
+                <ScalarProperty Name="BaslangicNoktasi" ColumnName="BaslangicNoktasi" />
+                <ScalarProperty Name="SeferId" ColumnName="SeferId" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="GpsVarmı" ColumnName="GpsVarmı" />
+                <ScalarProperty Name="SeferBaslama" ColumnName="SeferBaslama" />
+                <ScalarProperty Name="BaslangicEnlem" ColumnName="BaslangicEnlem" />
+                <ScalarProperty Name="BaslangicBoylam" ColumnName="BaslangicBoylam" />
+                <ScalarProperty Name="SeferBitme" ColumnName="SeferBitme" />
+                <ScalarProperty Name="BitisEnlem" ColumnName="BitisEnlem" />
+                <ScalarProperty Name="BitisBoylam" ColumnName="BitisBoylam" />
+                <ScalarProperty Name="GidilenYol" ColumnName="GidilenYol" />
+                <ScalarProperty Name="MaximumHiz" ColumnName="MaximumHiz" />
+                <ScalarProperty Name="SeferSuresi" ColumnName="SeferSuresi" />
+                <ScalarProperty Name="MaximumHizSuresi" ColumnName="MaximumHizSuresi" />
+                <ScalarProperty Name="IlkHareketeKadarRolanti" ColumnName="IlkHareketeKadarRolanti" />
+                <ScalarProperty Name="DurmaRolantiSuresi" ColumnName="DurmaRolantiSuresi" />
+                <ScalarProperty Name="SonRolantiSuresi" ColumnName="SonRolantiSuresi" />
+                <ScalarProperty Name="SurucuBilgisi" ColumnName="SurucuBilgisi" />
+                <ScalarProperty Name="BasCity" ColumnName="BasCity" />
+                <ScalarProperty Name="BasCountry" ColumnName="BasCountry" />
+                <ScalarProperty Name="BasDistrict" ColumnName="BasDistrict" />
+                <ScalarProperty Name="BasQuarter" ColumnName="BasQuarter" />
+                <ScalarProperty Name="BasStreet" ColumnName="BasStreet" />
+                <ScalarProperty Name="BitCity" ColumnName="BitCity" />
+                <ScalarProperty Name="BitCountry" ColumnName="BitCountry" />
+                <ScalarProperty Name="BitDistrict" ColumnName="BitDistrict" />
+                <ScalarProperty Name="BitQuarter" ColumnName="BitQuarter" />
+                <ScalarProperty Name="BitStreet" ColumnName="BitStreet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_STATUS_DETAILS">
+            <EntityTypeMapping TypeName="ATSModel.TBL_STATUS_DETAILS">
+              <MappingFragment StoreEntitySet="TBL_STATUS_DETAILS">
+                <ScalarProperty Name="StatusBitNo" ColumnName="StatusBitNo" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_TERMINAL">
+            <EntityTypeMapping TypeName="ATSModel.TBL_TERMINAL">
+              <MappingFragment StoreEntitySet="TBL_TERMINAL">
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_USER">
+            <EntityTypeMapping TypeName="ATSModel.TBL_USER">
+              <MappingFragment StoreEntitySet="TBL_USER">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="LastConnectionDate" ColumnName="LastConnectionDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneHome" ColumnName="PhoneHome" />
+                <ScalarProperty Name="PhoneWork" ColumnName="PhoneWork" />
+                <ScalarProperty Name="PhoneGsm" ColumnName="PhoneGsm" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="ATSModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="testid" ColumnName="testid" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_AktiviteRaporuByTerminalId" FunctionName="ATSModel.Store.SP_AktiviteRaporuByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_AktiviteRaporuByTerminalId_Result">
+                <ScalarProperty Name="STATU" ColumnName="STATU" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="DateTimeGps" ColumnName="DateTimeGps" />
+                <ScalarProperty Name="UnixTime" ColumnName="UnixTime" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_AnaKullaniciAraclari" FunctionName="ATSModel.Store.SP_AnaKullaniciAraclari">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_AnaKullaniciAraclari_Result">
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_AracBilgileribyCompanyId" FunctionName="ATSModel.Store.SP_AracBilgileribyCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_AracBilgileribyCompanyId_Result">
+                <ScalarProperty Name="depoDurum" ColumnName="depoDurum" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="SonVeri" ColumnName="SonVeri" />
+                <ScalarProperty Name="ihlalSayisi" ColumnName="ihlalSayisi" />
+                <ScalarProperty Name="mesafe" ColumnName="mesafe" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="DurmaSuresi" ColumnName="DurmaSuresi" />
+                <ScalarProperty Name="RolantiSuresi" ColumnName="RolantiSuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="toplamKm" ColumnName="toplamKm" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="SurucuAdi" ColumnName="SurucuAdi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_AracBilgileriByTerminalId" FunctionName="ATSModel.Store.SP_AracBilgileriByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_AracBilgileriByTerminalId_Result">
+                <ScalarProperty Name="depoDurum" ColumnName="depoDurum" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="SonVeri" ColumnName="SonVeri" />
+                <ScalarProperty Name="ihlalSayisi" ColumnName="ihlalSayisi" />
+                <ScalarProperty Name="mesafe" ColumnName="mesafe" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="DurmaSuresi" ColumnName="DurmaSuresi" />
+                <ScalarProperty Name="RolantiSuresi" ColumnName="RolantiSuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="toplamKm" ColumnName="toplamKm" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="SurucuAdi" ColumnName="SurucuAdi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_AracListesi" FunctionName="ATSModel.Store.SP_AracListesi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_AracListesi_Result">
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Mesafe" ColumnName="Mesafe" />
+                <ScalarProperty Name="Ignition1" ColumnName="Ignition1" />
+                <ScalarProperty Name="sonveri" ColumnName="sonveri" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_AracListesiByUpperCompanyId" FunctionName="ATSModel.Store.SP_AracListesiByUpperCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_AracListesiByUpperCompanyId_Result">
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Mesafe" ColumnName="Mesafe" />
+                <ScalarProperty Name="Ignition1" ColumnName="Ignition1" />
+                <ScalarProperty Name="sonveri" ColumnName="sonveri" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CalismaRaporuByTerminalId" FunctionName="ATSModel.Store.SP_CalismaRaporuByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_CalismaRaporuByTerminalId_Result">
+                <ScalarProperty Name="baslamazamani" ColumnName="baslamazamani" />
+                <ScalarProperty Name="bitmezamani" ColumnName="bitmezamani" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CalismaSuresiByCompanyId" FunctionName="ATSModel.Store.SP_CalismaSuresiByCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_CalismaSuresiByCompanyId_Result">
+                <ScalarProperty Name="calismasuresi" ColumnName="calismasuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CalismaSuresiByTerminalId" FunctionName="ATSModel.Store.SP_CalismaSuresiByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_CalismaSuresiByTerminalId_Result">
+                <ScalarProperty Name="calismasuresi" ColumnName="calismasuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CalismaSuresiInsert" FunctionName="ATSModel.Store.SP_CalismaSuresiInsert" />
+          <FunctionImportMapping FunctionImportName="SP_DetayliMesafeRaporu" FunctionName="ATSModel.Store.SP_DetayliMesafeRaporu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_DetayliMesafeRaporu_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="CalismaSuresi" ColumnName="CalismaSuresi" />
+                <ScalarProperty Name="CalismaBaslamaId" ColumnName="CalismaBaslamaId" />
+                <ScalarProperty Name="CalismaBitmeId" ColumnName="CalismaBitmeId" />
+                <ScalarProperty Name="CalismaBaslamaTarih" ColumnName="CalismaBaslamaTarih" />
+                <ScalarProperty Name="CalismaBitmeTarih" ColumnName="CalismaBitmeTarih" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="TransCode" ColumnName="TransCode" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="DateTimeLocal" ColumnName="DateTimeLocal" />
+                <ScalarProperty Name="DateTimeGps" ColumnName="DateTimeGps" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Distance1" ColumnName="Distance1" />
+                <ScalarProperty Name="Altitude" ColumnName="Altitude" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="NumberOfSatellite" ColumnName="NumberOfSatellite" />
+                <ScalarProperty Name="Parameter1" ColumnName="Parameter1" />
+                <ScalarProperty Name="Parameter2" ColumnName="Parameter2" />
+                <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="RolantiSuresi" ColumnName="RolantiSuresi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DurakIhlalleribyCompanyId" FunctionName="ATSModel.Store.SP_DurakIhlalleribyCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_DurakIhlalleribyCompanyId_Result">
+                <ScalarProperty Name="IhlalName" ColumnName="IhlalName" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="GirisDurak" ColumnName="GirisDurak" />
+                <ScalarProperty Name="CikisDurak" ColumnName="CikisDurak" />
+                <ScalarProperty Name="SureId" ColumnName="SureId" />
+                <ScalarProperty Name="GirisCikisSuresi" ColumnName="GirisCikisSuresi" />
+                <ScalarProperty Name="DurakGirisZaman" ColumnName="DurakGirisZaman" />
+                <ScalarProperty Name="DurakCikisZaman" ColumnName="DurakCikisZaman" />
+                <ScalarProperty Name="Yon" ColumnName="Yon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DuraklamaRaporu" FunctionName="ATSModel.Store.SP_DuraklamaRaporu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_DuraklamaRaporu_Result">
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="SeferBaslama" ColumnName="SeferBaslama" />
+                <ScalarProperty Name="SeferBitme" ColumnName="SeferBitme" />
+                <ScalarProperty Name="SeferSuresi" ColumnName="SeferSuresi" />
+                <ScalarProperty Name="GidilenYol" ColumnName="GidilenYol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DurmaRaporuByTerminalId" FunctionName="ATSModel.Store.SP_DurmaRaporuByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_DurmaRaporuByTerminalId_Result">
+                <ScalarProperty Name="BaslangicZamani" ColumnName="BaslangicZamani" />
+                <ScalarProperty Name="BitisZamani" ColumnName="BitisZamani" />
+                <ScalarProperty Name="DuraklamaSuresi" ColumnName="DuraklamaSuresi" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DurmaSuresiByCompanyId" FunctionName="ATSModel.Store.SP_DurmaSuresiByCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_DurmaSuresiByCompanyId_Result">
+                <ScalarProperty Name="durmasuresi" ColumnName="durmasuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DurmaSuresiByTerminalId" FunctionName="ATSModel.Store.SP_DurmaSuresiByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_DurmaSuresiByTerminalId_Result">
+                <ScalarProperty Name="durmasuresi" ColumnName="durmasuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DurmaSuresiInsert" FunctionName="ATSModel.Store.SP_DurmaSuresiInsert" />
+          <FunctionImportMapping FunctionImportName="SP_Gecmis_Izleme" FunctionName="ATSModel.Store.SP_Gecmis_Izleme">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_Gecmis_Izleme_Result">
+                <ScalarProperty Name="DateTimeGps" ColumnName="DateTimeGps" />
+                <ScalarProperty Name="DateTimeLocal" ColumnName="DateTimeLocal" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetAnimatedDataByTerminalId" FunctionName="ATSModel.Store.SP_GetAnimatedDataByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_GetAnimatedDataByTerminalId_Result">
+                <ScalarProperty Name="DateTimeGps" ColumnName="DateTimeGps" />
+                <ScalarProperty Name="DateTimeLocal" ColumnName="DateTimeLocal" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ATSModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ATSModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_IhlalListesiByCompanyId" FunctionName="ATSModel.Store.SP_IhlalListesiByCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_IhlalListesiByCompanyId_Result">
+                <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="AlarmDate" ColumnName="AlarmDate" />
+                <ScalarProperty Name="AlarmDetail" ColumnName="AlarmDetail" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_IhlalListesiByTerminalId" FunctionName="ATSModel.Store.SP_IhlalListesiByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_IhlalListesiByTerminalId_Result">
+                <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="AlarmDate" ColumnName="AlarmDate" />
+                <ScalarProperty Name="AlarmDetail" ColumnName="AlarmDetail" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_KontakRaporu" FunctionName="ATSModel.Store.SP_KontakRaporu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_KontakRaporu_Result">
+                <ScalarProperty Name="AlarmDate" ColumnName="AlarmDate" />
+                <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="AlarmType" ColumnName="AlarmType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_LoginBilgileri" FunctionName="ATSModel.Store.SP_LoginBilgileri">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_LoginBilgileri_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UpperCompany" ColumnName="UpperCompany" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_PersonelTakipBilgileriByTerminalId" FunctionName="ATSModel.Store.SP_PersonelTakipBilgileriByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_PersonelTakipBilgileriByTerminalId_Result">
+                <ScalarProperty Name="RfidCardNumber" ColumnName="RfidCardNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="STATU" ColumnName="STATU" />
+                <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Durak" ColumnName="Durak" />
+                <ScalarProperty Name="Yonu" ColumnName="Yonu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ATSModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="SP_RolantiSuresiByCompanyId" FunctionName="ATSModel.Store.SP_RolantiSuresiByCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_RolantiSuresiByCompanyId_Result">
+                <ScalarProperty Name="rolantisuresi" ColumnName="rolantisuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RolantiSuresiByTerminalId" FunctionName="ATSModel.Store.SP_RolantiSuresiByTerminalId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_RolantiSuresiByTerminalId_Result">
+                <ScalarProperty Name="rolantisuresi" ColumnName="rolantisuresi" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Sample" FunctionName="ATSModel.Store.SP_Sample">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_Sample_Result">
+                <ScalarProperty Name="DateTimeGps" ColumnName="DateTimeGps" />
+                <ScalarProperty Name="DateTimeLocal" ColumnName="DateTimeLocal" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+                <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SeferPaketi" FunctionName="ATSModel.Store.SP_SeferPaketi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_SeferPaketi_Result">
+                <ScalarProperty Name="Mesafe" ColumnName="Mesafe" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitModel" ColumnName="UnitModel" />
+                <ScalarProperty Name="UnitIpAddress" ColumnName="UnitIpAddress" />
+                <ScalarProperty Name="AccessoryType" ColumnName="AccessoryType" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TerminalStatus" ColumnName="TerminalStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="AccStatus" ColumnName="AccStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+                <ScalarProperty Name="OfflineDate" ColumnName="OfflineDate" />
+                <ScalarProperty Name="PositionDate" ColumnName="PositionDate" />
+                <ScalarProperty Name="VehicleDefaultDistance" ColumnName="VehicleDefaultDistance" />
+                <ScalarProperty Name="DefaultTankValue" ColumnName="DefaultTankValue" />
+                <ScalarProperty Name="CurrentTankValue" ColumnName="CurrentTankValue" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="GsmNumber" ColumnName="GsmNumber" />
+                <ScalarProperty Name="MotorBlokajDurumu" ColumnName="MotorBlokajDurumu" />
+                <ScalarProperty Name="KontakDurumu" ColumnName="KontakDurumu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TumAraclarByCompanyId" FunctionName="ATSModel.Store.SP_TumAraclarByCompanyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.SP_TumAraclarByCompanyId_Result">
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="LastPositionX" ColumnName="LastPositionX" />
+                <ScalarProperty Name="LastPositionY" ColumnName="LastPositionY" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Ignition" ColumnName="Ignition" />
+                <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="PlateNo" ColumnName="PlateNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
