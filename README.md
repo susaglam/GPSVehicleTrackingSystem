@@ -6,7 +6,7 @@ This project is a GPS Vehicle Tracking System that allows users to monitor and t
 ![Screenshot of the Application](Screenshot2.png)
 ![Screenshot of the Application](Screenshot3.png)
 ![Screenshot of the Application](Screenshot4.png)
-![Screenshot of the Application](Screenshot5.png)
+![Screenshot of the Application](Screenshot5.png) 
 
 ## Table of Contents
 - [Features](#features)
