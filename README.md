@@ -86,7 +86,7 @@ The application requires certain configurations which are specified in the `app.
 - `AracTakipDb`: This connection string is used by Entity Framework to connect to the SQL Server database.
   ```xml
   <connectionStrings>
-    <add name="AracTakipDb" connectionString="metadata=res://*/AracTakip.csdl|res://*/AracTakip.ssdl|res://*/AracTakip.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=localhost;initial catalog=ats_db_2017;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
+    <add name="AracTakipDb" connectionString="metadata=res://*/AracTakip.csdl|res://*/AracTakip.ssdl|res://*/AracTakip.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=localhost;initial catalog=db-name;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
       providerName="System.Data.EntityClient" />
   </connectionStrings>
   ```
@@ -94,7 +94,7 @@ The application requires certain configurations which are specified in the `app.
 - `ATS.Properties.Settings.baglanti`: This connection string is used for general database operations.
   ```xml
   <connectionStrings>
-    <add name="ATS.Properties.Settings.baglanti" connectionString="Data Source=localhost;Initial Catalog=ats_db_2017;Integrated Security=True"
+    <add name="ATS.Properties.Settings.baglanti" connectionString="Data Source=localhost;Initial Catalog=db-name;Integrated Security=True"
       providerName="System.Data.SqlClient" />
   </connectionStrings>
   ```
